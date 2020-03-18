@@ -7,16 +7,26 @@ This is the repository to store all infrastructure related items to the challeng
 
 ### Ambiverse-NLU
 
+Clone this repository:
 https://github.com/TrivadisPF/ambiverse-nlu
 
-To start your analysis you have to build the Dockerfile, run the following command in the "dockers" directory
+Before starting Ambiverse you have to build the Dockerfiles
+
+First building the db
 ~~~~~~~~~~~~
-docker build -t trivadis/ambiverse-nlu:latest .
+docker build -t trivadis/nlu-db-postgres:latest dockers/postgres
 ~~~~~~~~~~~~
-Then start the environment from the root directory of your git import:
+And the NLU service
 ~~~~~~~~~~~~
-docker-compose -f docker-compose/service-postgres.yml up
+docker build -t trivadis/ambiverse-nlu:latest dockers/nlu
 ~~~~~~~~~~~~
+
+## Run
+In order to start the stack you have to run:
+~~~~~~~~~~~~
+docker-compose -f cord19_stack.yml up
+~~~~~~~~~~~~
+This will take some time. It depends on your network speed (downloading the 25GB Database dump from the MPI) and CPU speed (storing back the DB in the Postgres).
 
 
 ## Code
