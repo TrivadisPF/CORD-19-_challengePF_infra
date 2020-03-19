@@ -19,3 +19,13 @@ services:
       - 8080:8080
     environment:
       AIDA_CONF: aida_20180120_cs_de_en_es_ru_zh_v18_db
+
+  jupyter:
+    image: jupyter/datascience-notebook
+    volumes:
+      - $PWD:/home/work
+    ports:
+      - 80:8888
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    command: /bin/bash -c "start.sh jupyter lab --NotebookApp.password='sha1:a7e096a9999d:27be4f3725e6d81e4ea7e182614d84ce4fb168f0'"
