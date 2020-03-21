@@ -9,6 +9,8 @@ services:
       POSTGRES_PASSWORD: ambiversenlu
       POSTGRES_DB: aida_20180120_cs_de_en_es_ru_zh_v18
       POSTGRES_USER: ambiversenlu
+    volumes:
+      - $PWD/db_data:/var/lib/postgresql/data
 
   nlu:
     image: trivadis/ambiverse-nlu-large:latest
