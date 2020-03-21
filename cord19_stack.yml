@@ -22,6 +22,7 @@ services:
 
   jupyter:
     image: jupyter/datascience-notebook
+    restart: always
     volumes:
       - $PWD:/home/jovyan/work
     ports:
